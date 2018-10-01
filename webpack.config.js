@@ -6,7 +6,7 @@ module.exports = {
 
   output: {
     filename: 'bundle.js',
-    publicPath: '/',
+    publicPath: './dist',
     path: path.join(__dirname, 'dist'),
   },
 
@@ -25,7 +25,11 @@ module.exports = {
         include: path.join(__dirname, 'app'),
         exclude: path.resolve(__dirname, 'node_modules'),
         use: [
-          { loader: 'file-loader' },
+          { loader: 'file-loader',
+            options: {
+              name: '/assets/[name].[ext]'
+            },
+         },
         ]
       },
       {
