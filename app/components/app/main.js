@@ -1,6 +1,8 @@
 import React from 'react';
 
 import SpinnerIcon from '../icon/main.js';
+import WeatherBox from '../weatherBox/main.js';
+
 import styles from './main.scss';
 
 import classnames from 'classnames/bind';
@@ -43,21 +45,13 @@ class App extends React.Component {
         return response.json();
       })
       .then(data => {
-        console.log(data);
         let weather = data.weather.map((item, index) => {
-          console.log(item);
           return (
-            <div key='index' className={styles['weather']}>
-              <div className={styles['weather__item']}>
-                <h1>{data.name}</h1>
-              </div>
-              <div className={styles['weather__item']}>
-                <span>{`${data.main.temp.toFixed()} C`}</span>
-              </div>
-              <div className={styles['weather__item']}>
-                <span>{item.main}</span>
-              </div>
-            </div>
+            <WeatherBox key={index}
+              location={data.name}
+              temperature={data.main.temp}
+              weatherCondition={item.main}
+            />
           )
         })
 

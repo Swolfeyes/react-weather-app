@@ -1,14 +1,15 @@
 {
-  "name": "Weather App",
+  "name": "Weather-App",
   "version": "1.0.0",
   "description": "check the weather in your area",
   "main": "index.js",
-  "homepage": "https://github.com/Swolfeyes/react-weather-app.git",
+  "homepage": "http://Swolfeyes.github.io/react-weather-app",
   "dependencies": {
     "classnames": "^2.2.6",
     "prop-types": "^15.6.1",
     "react": "^16.3.0",
-    "react-dom": "^16.3.0"
+    "react-dom": "^16.3.0",
+    "react-scripts": "1.1.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
