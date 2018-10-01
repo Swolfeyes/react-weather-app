@@ -1,0 +1,14 @@
+
+.weather-box {
+  padding: 10px 40px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.6);
+
+  &__item {
+    padding: 20px;
+
+    span {
+      font-size: 25px;
+    }
+  }
+}
