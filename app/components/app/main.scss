@@ -32,7 +32,7 @@
 
 
 //Themes
- $list: (Rain, Clouds, Thunderstorm, Drizzle, Snow, Atmosphere, Clear);
+ $list: (Rain, Clouds, Thunderstorm, Drizzle, Snow, Atmosphere, Clear, Mist);
 
 .app {
   @each $image in $list {

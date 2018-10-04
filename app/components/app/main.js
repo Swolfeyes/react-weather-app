@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 import SpinnerIcon from '../icon/main.js';
 import WeatherBox from '../weatherBox/main.js';
 
@@ -45,22 +47,13 @@ class App extends React.Component {
         return response.json();
       })
       .then(data => {
-        let weather = data.weather.map((item, index) => {
-          return (
-            <WeatherBox key={index}
-              location={data.name}
-              temperature={data.main.temp}
-              weatherCondition={item.main}
-            />
-          )
-        })
+        console.log(data);
 
         this.setState({
           fetchDataStatus: 'success',
-          data: weather,
+          data: data,
           condition: data.weather[0].main,
         });
-
       })
       .catch(error => {
 
@@ -68,7 +61,6 @@ class App extends React.Component {
           fetchDataStatus: 'error',
         });
       });
-
   }
 
   getLocation() {
@@ -96,7 +88,8 @@ class App extends React.Component {
   render() {
 
     const { fetchDataStatus, data, condition } = this.state;
-
+    console.log(fetchDataStatus);
+    console.log(data);
     const classes = cx({
       'app': true,
       [`app--theme-${condition}`]: condition,
@@ -105,17 +98,21 @@ class App extends React.Component {
     return (
       <div className={classes}>
         {fetchDataStatus === 'pending' &&
-        <div className={styles['app__item']}>
-          <span>Getting weather info...</span>
-          <div className={styles['app__item__icon']}>
-            <SpinnerIcon />
+          <div className={styles['app__item']}>
+            <span>Getting weather info...</span>
+            <div className={styles['app__item__icon']}>
+              <SpinnerIcon />
+            </div>
           </div>
-        </div>
         }
         {fetchDataStatus === 'success' &&
-        <div className={styles['app__item']}>
-          {data}
-        </div>
+          <div className={styles['app__item']}>
+            <WeatherBox
+               location={data.name}
+               temperature={data.main.temp}
+               weatherCondition={data.weather[0].main}
+             />
+          </div>
         }
         {fetchDataStatus === 'error' &&
         <div className={styles['app__item']}>
